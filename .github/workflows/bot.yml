@@ -1,0 +1,22 @@
+name: Aternos Bot
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"  # chạy mỗi 5 phút
+  workflow_dispatch:
+
+jobs:
+  run-bot:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+
+      - name: Run bot
+        run: node bot.js
